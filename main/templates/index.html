@@ -5,10 +5,42 @@
   <head>
     <meta charset="utf-8">
     <title>Meta File Reader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
   </head>
   <body>
     <h1>Meta File Reader</h1>
-    <div>{{ data }}</div>
+    <table class="table-bordered">
+      <tr>
+        <th>date</th>
+        <th>action</th>
+        <th>rating</th>
+        <th>submit-type</th>
+        <th>filename</th>
+      </tr>
+      {% for file in data %}
+        {% if file.rating == "malicious" %}
+          <tr class="malicious">
+        {% elif file.rating == "high-risk" %}
+          <tr class="high-risk">
+        {% elif file.rating == "medium-risk" %}
+          <tr class="medium-risk">
+        {% elif file.rating == "low-risk" %}
+          <tr class="low-risk">
+        {% elif file.rating == "clean" %}
+          <tr class="clean">
+        {% endif %}
+
+          {% for val in file.itervalues %}
+            <td>{{val}}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+
+
+
+
     <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
   </body>

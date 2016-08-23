@@ -14,7 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROOT_PATH = os.path.split(os.path.abspath(__file__))[0]
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+FILE_PATH = os.path.join(PROJECT_DIR, 'meta_files/*')
+
 
 
 # Quick-start development settings - unsuitable for production

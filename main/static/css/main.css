@@ -1,0 +1,23 @@
+th, td {
+  padding: 10px;
+}
+
+.malicious {
+  background: red;
+}
+
+.high-risk {
+  background: orange;
+}
+
+.medium-risk {
+  background: yellow;
+}
+
+.low-risk {
+  background: lightgreen;
+}
+
+.clean {
+  background: lightblue;
+}
