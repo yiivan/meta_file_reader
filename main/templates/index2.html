@@ -1,0 +1,60 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Meta File Reader</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+    <script src="{% static "js/jquery-3.1.0.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
+  </head>
+  <body>
+    <h1>Meta File Reader</h1>
+    <table id="table" class="table-bordered">
+      <tr>
+        <th>date</th>
+        <th>filename</th>
+        <th>action</th>
+        <th>submit-type</th>
+        <th>rating</th>
+      </tr>
+    </table>
+
+    <script type="text/javascript">
+      $.ajax({
+        url: "/json/",
+        method: "GET",
+        error: function(){
+          alert("Failed");
+        },
+        success: function(data) {
+          $("tr").has("td").remove();
+          data.forEach(function(dict){
+            if (dict["rating"] == "malicious"){
+              var rating = "malicious"
+            } else if (dict["rating"] == "high-risk") {
+              var rating = "high-risk"
+            } else if (dict["rating"] == "medium-risk") {
+              var rating = "medium-risk"
+            } else if (dict["rating"] == "low-risk") {
+              var rating = "low-risk"
+            } else if (dict["rating"] == "clean") {
+              var rating = "clean"
+            }
+            $("#table").append(
+              "<tr class=" + rating + ">"
+                + "<td>" + dict["date"] + "</td>"
+                + "<td>" + dict["filename"] + "</td>"
+                + "<td>" + dict["action"] + "</td>"
+                + "<td>" + dict["submit-type"] + "</td>"
+                + "<td>" + dict["rating"] + "</td>"
+              + "</tr>"
+            )
+          })
+        }
+      });
+    </script>
+  </body>
+</html>
