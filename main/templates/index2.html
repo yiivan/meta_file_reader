@@ -31,6 +31,9 @@
         },
         success: function(data) {
           $("tr").has("td").remove();
+          data.sort(function(a, b){
+            return a["date"].localeCompare(b["date"]);
+          });
           data.forEach(function(dict){
             if (dict["rating"] == "malicious"){
               var rating = "malicious"
