@@ -8,20 +8,18 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request):
-    #opens the json file and saves the raw contents
+    #opens the json files and saves the raw contents and deserialize it
     path = os.path.join(settings.FILE_PATH)
     files = glob.glob(path)
     files_data = []
     for file in files:
         opener = open(file, 'r')
-        file_data = opener.read()
-        # d = serializers.serialize("json", file_data)
-        # file_data = file_data.replace('\r', '\\r').replace('\n', '\\n')
-        d = json.loads(file_data.replace("\'", '"'))
-
-
+        json_data = opener.read()
+        file_data = json.loads(json_data.replace("\'", '"'))
+        files_data += file_data
     #disconnects the file from the variable
         opener.close()
 
-    # pdb.set_trace()
-    return render(request, 'index.html', {'data': d})
+        # pdb.set_trace()
+
+    return render(request, 'index.html', {'data': files_data})

@@ -7,11 +7,32 @@
 'rating': 'high-risk'
 },
 {
-'date': 'Jan 3, 2015 13:12:59',
-'filename': 'helper3.exe',
+'date': 'Jan 4, 2015 13:12:59',
+'filename': 'helper4.exe',
 'action': 'files-added',
 'submit-type': 'FG300/root',
 'rating': 'low-risk'
+},
+{
+'date': 'Jan 5, 2015 13:10:59',
+'filename': 'virus5.exe',
+'action': 'files-deleted',
+'submit-type': 'FG300/root',
+'rating': 'medium-risk'
+},
+{
+'date': 'Jan 6, 2015 13:12:59',
+'filename': 'helper6.exe',
+'action': 'files-added',
+'submit-type': 'FG300/root',
+'rating': 'clean'
+},
+{
+'date': 'Jan 7, 2015 13:10:59',
+'filename': 'virus7.exe',
+'action': 'files-deleted',
+'submit-type': 'FG300/root',
+'rating': 'malicious'
 }
 
 ]
