@@ -2,6 +2,14 @@ th, td {
   padding: 10px;
 }
 
+th {
+  cursor: pointer;
+}
+
+th:hover{
+  color: blue;
+}
+
 .malicious {
   background: red;
 }
