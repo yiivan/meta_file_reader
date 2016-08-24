@@ -1,6 +1,7 @@
 var allData;
 var selectedData;
 $(document).ready(function() {
+  // This renders the data into the table with Ajax.
   $.ajax({
     url: "/json/",
     method: "GET",
@@ -39,6 +40,7 @@ $(document).ready(function() {
     }
   });
 
+  // This pops an alert with ajax when a new file is added or deleted.
   var watch = function(){
     $.ajax({
       url: "/watch/",
@@ -51,6 +53,7 @@ $(document).ready(function() {
   setInterval(watch, 3000);
 
 
+  // This is a function that sorting and filtering by time period used to rerender the data into the table.
   var render_table = function(newData){
     $("tr").has("td").remove();
     newData.forEach(function(dict){
@@ -77,7 +80,7 @@ $(document).ready(function() {
     });
   };
 
-
+  // These codes sort the data according to the field clicked.
   $(".date").on("click", function(){
     selectedData.sort(function(a, b){
       return new Date(b["date"]) - new Date(a["date"]);
@@ -113,6 +116,7 @@ $(document).ready(function() {
     render_table(selectedData);
   });
 
+  // This filter the data according to the time-period selected.
   $(".time-period").on("change", function(){
     selectedData = [];
     if ($(".time-period option:selected").val() === "24-hours"){
