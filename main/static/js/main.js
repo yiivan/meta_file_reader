@@ -40,8 +40,9 @@ $(document).ready(function() {
 
 
 
-  var render_table = function(){
-    globalData.forEach(function(dict){
+  var render_table = function(newData){
+    $("tr").has("td").remove();
+    newData.forEach(function(dict){
       if (dict["rating"] == "malicious"){
         var rating = "malicious";
       } else if (dict["rating"] == "high-risk") {
@@ -67,55 +68,81 @@ $(document).ready(function() {
 
 
   $(".date").on("click", function(){
-    $("tr").has("td").remove();
-    globalData.sort(function(a, b){
+    selectedData.sort(function(a, b){
       return new Date(b["date"]) - new Date(a["date"]);
     });
-    render_table();
+    render_table(selectedData);
   });
 
   $(".filename").on("click", function(){
-    $("tr").has("td").remove();
-    globalData.sort(function(a, b){
+    selectedData.sort(function(a, b){
       return a["filename"].localeCompare(b["filename"]);
     });
-    render_table();
+    render_table(selectedData);
   });
 
   $(".action").on("click", function(){
-    $("tr").has("td").remove();
-    globalData.sort(function(a, b){
+    selectedData.sort(function(a, b){
       return a["action"].localeCompare(b["action"]);
     });
-    render_table();
+    render_table(selectedData);
   });
 
   $(".submit-type").on("click", function(){
-    $("tr").has("td").remove();
-    globalData.sort(function(a, b){
+    selectedData.sort(function(a, b){
       return a["submit-type"].localeCompare(b["submit-type"]);
     });
-    render_table();
+    render_table(selectedData);
   });
 
   $(".rating").on("click", function(){
-    $("tr").has("td").remove();
-    globalData.sort(function(a, b){
+    selectedData.sort(function(a, b){
       return a["rating"].localeCompare(b["rating"]);
     });
-    render_table();
+    render_table(selectedData);
   });
 
   $(".time-period").on("change", function(){
+    selectedData = [];
     if ($(".time-period option:selected").val() === "24-hours"){
-      console.log("1")
+      var now = new Date();
+      now.setDate(now.getDate() - 1);
+      var oneDayAgo = new Date(now);
+
+      globalData.forEach(function(dict){
+        if (new Date(dict["date"]) > oneDayAgo){
+          selectedData.push(dict);
+        }
+      });
+      render_table(selectedData);
+
     } else if ($(".time-period option:selected").val() === "7-days") {
-      console.log("2")
+      var now = new Date();
+      now.setDate(now.getDate() - 7);
+      var sevenDaysAgo = new Date(now);
+
+      globalData.forEach(function(dict){
+        if (new Date(dict["date"]) > sevenDaysAgo){
+          selectedData.push(dict);
+        }
+      });
+      render_table(selectedData);
+
     } else if ($(".time-period option:selected").val() === "4-weeks") {
-      console.log("3")
+      var now = new Date();
+      now.setDate(now.getDate() - 28);
+      var fourWeeksAgo = new Date(now);
+
+      globalData.forEach(function(dict){
+        if (new Date(dict["date"]) > fourWeeksAgo){
+          selectedData.push(dict);
+        }
+      });
+      render_table(selectedData);
+    } else if ($(".time-period option:selected").val() === "all-data") {
+      selectedData = globalData
+      render_table(selectedData);
     }
   });
-
-
 
 });
