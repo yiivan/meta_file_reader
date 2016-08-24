@@ -1,17 +1,38 @@
 [
 {
-'date': 'Jan 2, 2015 13:10:59',
-'filename': 'virus2.exe',
+'date': 'Aug 3, 2016 13:10:59',
+'filename': 'virus303.exe',
 'action': 'files-deleted',
-'submit-type': 'FG300/root',
+'submit-type': 'FG300B3910602113/root',
 'rating': 'high-risk'
 },
 {
-'date': 'Jan 2, 2015 13:12:59',
-'filename': 'helper2.exe',
+'date': 'Aug 4, 2016 13:12:59',
+'filename': 'helper404.exe',
 'action': 'files-added',
-'submit-type': 'FG300/root',
+'submit-type': 'FG300B3910602113/root',
 'rating': 'low-risk'
+},
+{
+'date': 'Aug 5, 2016 13:10:59',
+'filename': 'virus505.exe',
+'action': 'files-deleted',
+'submit-type': 'FG300B3910602113/root',
+'rating': 'medium-risk'
+},
+{
+'date': 'Aug 24, 2016 11:12:59',
+'filename': 'helper606.exe',
+'action': 'files-added',
+'submit-type': 'FG300B3910602113/root',
+'rating': 'clean'
+},
+{
+'date': 'Aug 24, 2016 11:10:59',
+'filename': 'virus707.exe',
+'action': 'files-deleted',
+'submit-type': 'FG300B3910602113/root',
+'rating': 'malicious'
 }
 
 ]
