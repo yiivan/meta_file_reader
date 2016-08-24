@@ -1,8 +1,11 @@
 th, td {
   padding: 10px;
+  width: 13%;
+  font-weight: bold;
 }
 
 th {
+  font-size: 18px;
   cursor: pointer;
 }
 

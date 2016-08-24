@@ -11,7 +11,14 @@
     <script src="{% static "js/main.js" %}"></script>
   </head>
   <body>
-    <h1 class="title">Meta File Reader</h1>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1 class="title">Meta File Reader</h1>
+        </div>
+      </div>
+    </nav>
+
     <select class="time-period">
       <option value="" disabled selected hidden>Time Period</option>
       <option value="24-hours">24 hours</option>
@@ -21,11 +28,11 @@
     </select>
     <table id="table" class="table-bordered">
       <tr>
-        <th class="date">date</th>
-        <th class="filename">filename</th>
-        <th class="action">action</th>
-        <th class="submit-type">submit-type</th>
-        <th class="rating">rating</th>
+        <th class="date">Date</th>
+        <th class="filename">Filename</th>
+        <th class="action">Action</th>
+        <th class="submit-type">Submit-type</th>
+        <th class="rating">Rating</th>
       </tr>
     </table>
   </body>
