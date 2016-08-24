@@ -33,22 +33,3 @@ def watch(request):
         if added: return HttpResponse("Added")
         if removed: return HttpResponse("Removed")
         before = after
-
-def watch_modified(request):
-    path_to_watch = os.path.join(settings.FILE_PATH + "*.json")
-    files = glob.glob(path_to_watch)
-    cached_stamp = {}
-    stamp = {}
-    first = True
-    while 1:
-        time.sleep (10)
-        for file in files:
-            stamp[file] = os.stat(file).st_mtime
-            if first:
-                cached_stamp[file] = stamp[file]
-
-            if stamp[file] != cached_stamp[file]:
-                cached_stamp[file] = stamp[file]
-                # File has changed, so do something...
-                return HttpResponse("Modified")
-        first = False
