@@ -1,4 +1,5 @@
 var globalData;
+var selectedData;
 $(document).ready(function() {
   $.ajax({
     url: "/json/",
@@ -104,5 +105,17 @@ $(document).ready(function() {
     });
     render_table();
   });
+
+  $(".time-period").on("change", function(){
+    if ($(".time-period option:selected").val() === "24-hours"){
+      console.log("1")
+    } else if ($(".time-period option:selected").val() === "7-days") {
+      console.log("2")
+    } else if ($(".time-period option:selected").val() === "4-weeks") {
+      console.log("3")
+    }
+  });
+
+
 
 });

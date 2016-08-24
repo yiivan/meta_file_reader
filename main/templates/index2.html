@@ -11,7 +11,13 @@
     <script src="{% static "js/main.js" %}"></script>
   </head>
   <body>
-    <h1>Meta File Reader</h1>
+    <h1 class="title">Meta File Reader</h1>
+    <select class="time-period">
+      <option value="" disabled selected hidden>Time Period</option>
+      <option value="24-hours">24 hours</option>
+      <option value="7-days">7 days</option>
+      <option value="4-weeks">4 weeks</option>
+    </select>
     <table id="table" class="table-bordered">
       <tr>
         <th class="date">date</th>

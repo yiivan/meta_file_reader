@@ -10,6 +10,18 @@ th:hover{
   color: blue;
 }
 
+table {
+  margin: 10px;
+}
+
+.title {
+  margin: 10px;
+}
+
+.time-period {
+  margin: 10px;
+}
+
 .malicious {
   background: red;
 }
