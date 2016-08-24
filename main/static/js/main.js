@@ -1,4 +1,4 @@
-var globalData;
+var allData;
 var selectedData;
 $(document).ready(function() {
   $.ajax({
@@ -8,7 +8,8 @@ $(document).ready(function() {
       alert("Failed");
     },
     success: function(data) {
-      globalData = data
+      allData = data
+      selectedData = allData
       $("tr").has("td").remove();
       data.sort(function(a, b){
         return new Date(b["date"]) - new Date(a["date"]);
@@ -109,7 +110,7 @@ $(document).ready(function() {
       now.setDate(now.getDate() - 1);
       var oneDayAgo = new Date(now);
 
-      globalData.forEach(function(dict){
+      allData.forEach(function(dict){
         if (new Date(dict["date"]) > oneDayAgo){
           selectedData.push(dict);
         }
@@ -121,7 +122,7 @@ $(document).ready(function() {
       now.setDate(now.getDate() - 7);
       var sevenDaysAgo = new Date(now);
 
-      globalData.forEach(function(dict){
+      allData.forEach(function(dict){
         if (new Date(dict["date"]) > sevenDaysAgo){
           selectedData.push(dict);
         }
@@ -133,14 +134,14 @@ $(document).ready(function() {
       now.setDate(now.getDate() - 28);
       var fourWeeksAgo = new Date(now);
 
-      globalData.forEach(function(dict){
+      allData.forEach(function(dict){
         if (new Date(dict["date"]) > fourWeeksAgo){
           selectedData.push(dict);
         }
       });
       render_table(selectedData);
     } else if ($(".time-period option:selected").val() === "all-data") {
-      selectedData = globalData
+      selectedData = allData
       render_table(selectedData);
     }
   });
