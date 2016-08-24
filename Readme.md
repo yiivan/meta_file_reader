@@ -10,7 +10,7 @@
 
 ## Steps:
 
-1. Download the Meta_File_Reader zip file and unzip it.
+1. Obtain the Meta_File_Reader application.
 
 2. Place sample meta-files into:   
 	 Meta_File_Reader/Meta_File_Reader/meta_files   
