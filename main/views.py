@@ -39,14 +39,16 @@ def watch_modified(request):
     files = glob.glob(path_to_watch)
     cached_stamp = {}
     stamp = {}
+    first = True
     while 1:
         time.sleep (10)
         for file in files:
-            # cached_stamp[file] = stamp[file]
             stamp[file] = os.stat(file).st_mtime
-            cached_stamp[file] = cached_stamp[file] if True in vars() else stamp[file]
-            # foo = foo if 'foo' in vars() else 7
+            if first:
+                cached_stamp[file] = stamp[file]
+
             if stamp[file] != cached_stamp[file]:
                 cached_stamp[file] = stamp[file]
                 # File has changed, so do something...
                 return HttpResponse("Modified")
+        first = False
