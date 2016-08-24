@@ -24,8 +24,8 @@
 
 5. The data are rendered in a table and each row is color-coded based on the record's threat level(rating).
 
-6. The fields can be sorted by clicking the table header for each field.
+6. When a new file is added or deleted in the directory, an alert will pop up in a few seconds to tell the user to reload the table.
 
-7. The data can be filtered by selecting the time-period dropdown at the upper left of the table.
+7. The fields can be sorted by clicking the table header for each field.
 
-8. When a new file is added or deleted in the directory, an alert will pop up in a few seconds to tell the user to reload the table.
+8. The data can be filtered by selecting the time-period dropdown at the upper left of the table.
