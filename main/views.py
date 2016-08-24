@@ -1,6 +1,4 @@
-import os
-import json
-import glob
+import os, glob, json, time
 from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -8,7 +6,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def ajax(request):
-    path = os.path.join(settings.FILE_PATH)
+    path = os.path.join(settings.FILE_PATH + "*.json")
     files = glob.glob(path)
     files_data = []
     for file in files:
@@ -23,3 +21,32 @@ def ajax(request):
 
 def index(request):
     return render(request, 'index.html')
+
+def watch(request):
+    path_to_watch = os.path.join(settings.FILE_PATH)
+    before = dict ([(f, None) for f in os.listdir (path_to_watch)])
+    while 1:
+        time.sleep (10)
+        after = dict ([(f, None) for f in os.listdir (path_to_watch)])
+        added = [f for f in after if not f in before]
+        removed = [f for f in before if not f in after]
+        if added: return HttpResponse("Added")
+        if removed: return HttpResponse("Removed")
+        before = after
+
+def watch_modified(request):
+    path_to_watch = os.path.join(settings.FILE_PATH + "*.json")
+    files = glob.glob(path_to_watch)
+    cached_stamp = {}
+    stamp = {}
+    while 1:
+        time.sleep (10)
+        for file in files:
+            # cached_stamp[file] = stamp[file]
+            stamp[file] = os.stat(file).st_mtime
+            cached_stamp[file] = cached_stamp[file] if True in vars() else stamp[file]
+            # foo = foo if 'foo' in vars() else 7
+            if stamp[file] != cached_stamp[file]:
+                cached_stamp[file] = stamp[file]
+                # File has changed, so do something...
+                return HttpResponse("Modified")

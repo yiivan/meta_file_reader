@@ -39,7 +39,28 @@ $(document).ready(function() {
     }
   });
 
+  var watch = function(){
+    $.ajax({
+      url: "/watch/",
+      method: "GET",
+      success: function(data) {
+        alert("Please reload the table.");
+      }
+    });
+  }
+  setInterval(watch, 3000);
 
+
+  var watchModified = function(){
+    $.ajax({
+      url: "/watch_modified/",
+      method: "GET",
+      success: function(data) {
+        alert("Please reload the table.");
+      }
+    });
+  }
+  setInterval(watchModified, 3000);
 
   var render_table = function(newData){
     $("tr").has("td").remove();
