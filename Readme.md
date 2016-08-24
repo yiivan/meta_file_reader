@@ -14,7 +14,7 @@
 
 2. Place sample meta-files into:   
 	 Meta_File_Reader/Meta_File_Reader/meta_files   
-	 Each file has to be a list of JSON records and in the '.json' format.
+	 Each file will be a list of JSON records and has to be in the '.json' format.
 
 3. Inside the first layer of the Meta_File_Reader folder, run the server in the terminal:   
    python manage.py runserver
